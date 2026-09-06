@@ -10,7 +10,7 @@ export default function TopBar() {
   const [intentResult, setIntentResult] = useState<any>(null);
   const { activeProject } = useProjectContext();
 
-  const handleKeyDown = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = async (e: any) => {
     if (e.key === "Enter" && query.trim()) {
       const currentQuery = query;
       setSubmittedQuery(currentQuery);

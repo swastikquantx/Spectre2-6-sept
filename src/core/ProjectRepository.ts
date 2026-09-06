@@ -7,57 +7,37 @@ export interface ProjectRepository {
   update(id: string, updates: Partial<Project>): Promise<Project>;
 }
 
-// Prototype mode adapter using localStorage
-export class PrototypeProjectRepository implements ProjectRepository {
-  private readonly STORAGE_KEY = 'spectre_prototype_projects';
-
-  private getProjects(): Project[] {
-    try {
-      const data = localStorage.getItem(this.STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
-    } catch {
-      return [];
-    }
-  }
-
-  private saveProjects(projects: Project[]) {
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(projects));
-  }
-
+export class ApiProjectRepository implements ProjectRepository {
   async create(p: Omit<Project, 'id' | 'createdAt' | 'updatedAt' | 'status' | 'stage'>): Promise<Project> {
-    const newProj: Project = {
-      ...p,
-      id: `prj_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
-      status: 'DRAFT',
-      stage: 'IDEA',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    };
-    const projects = this.getProjects();
-    projects.push(newProj);
-    this.saveProjects(projects);
-    return newProj;
+    const res = await fetch('/api/projects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(p)
+    });
+    return res.json();
   }
 
   async get(id: string): Promise<Project | null> {
-    const projects = this.getProjects();
-    return projects.find(p => p.id === id) || null;
+    const res = await fetch(`/api/projects/${id}`);
+    if (res.status === 404) return null;
+    return res.json();
   }
 
   async list(): Promise<Project[]> {
-    return this.getProjects().sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+    const res = await fetch('/api/projects');
+    const data = await res.json();
+    return data.sort((a: Project, b: Project) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
   }
 
   async update(id: string, updates: Partial<Project>): Promise<Project> {
-    const projects = this.getProjects();
-    const index = projects.findIndex(p => p.id === id);
-    if (index === -1) throw new Error("Project not found");
-    
-    const updated = { ...projects[index], ...updates, updatedAt: new Date().toISOString() };
-    projects[index] = updated;
-    this.saveProjects(projects);
-    return updated;
+    const res = await fetch(`/api/projects/${id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updates)
+    });
+    if (!res.ok) throw new Error("Failed to update project");
+    return res.json();
   }
 }
 
-export const projectRepo = new PrototypeProjectRepository();
+export const projectRepo = new ApiProjectRepository();

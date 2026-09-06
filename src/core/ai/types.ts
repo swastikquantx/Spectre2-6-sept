@@ -1,7 +1,7 @@
 export type AIProviderId = 'GEMINI' | 'OPENAI_COMPATIBLE' | 'MOCK';
 export type AIModelClass = 'FREE' | 'ECONOMY' | 'BALANCED' | 'QUALITY' | 'PREMIUM';
 export type AITaskType = 'GENERAL' | 'RESEARCH' | 'STRATEGY' | 'REASONING' | 'CODING' | 'ARCHITECTURE' | 'CREATIVE' | 'SUMMARIZATION' | 'CLASSIFICATION' | 'DATA_ANALYSIS' | 'VISION' | 'FAST_RESPONSE';
-export type AICapability = 'FAST' | 'REASONING' | 'CODING' | 'CREATIVE' | 'RESEARCH' | 'VISION' | 'LONG_CONTEXT' | 'STRUCTURED_OUTPUT';
+export type AICapability = 'FAST' | 'REASONING' | 'CODING' | 'CREATIVE' | 'RESEARCH' | 'VISION' | 'LONG_CONTEXT' | 'STRUCTURED_OUTPUT' | 'DATA_ANALYSIS' | 'ARCHITECTURE';
 
 export interface AIProviderStatus {
   id: AIProviderId;

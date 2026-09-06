@@ -17,7 +17,7 @@ export class SpectreOrchestrator {
     };
 
     for (const step of plan.steps) {
-      if (plan.status === 'CANCELLED' || plan.status === 'FAILED') break;
+      if ((plan.status as any) === 'CANCELLED' || (plan.status as any) === 'FAILED') break;
 
       step.status = 'RUNNING';
       console.log(`[Orchestrator] Step ${step.stepNumber}: ${step.objective} -> ${step.assignedAgent}`);
@@ -104,7 +104,7 @@ export class SpectreOrchestrator {
       }
     }
 
-    if (plan.status !== 'FAILED' && plan.status !== 'CANCELLED') {
+    if ((plan.status as any) !== 'FAILED' && (plan.status as any) !== 'CANCELLED') {
       plan.status = 'COMPLETE';
     }
     

@@ -35,9 +35,12 @@ export default function AdminSidebar() {
     <aside className="w-60 h-full border-r border-slate-800 flex flex-col bg-[#020202] z-20 shrink-0">
       <div className="p-6 mb-2">
         <div className="flex items-center gap-3">
+          <div className="w-8 h-8 bg-white/90 rounded-md flex items-center justify-center p-1 shrink-0">
+            <img src="/spectre-logo.webp" alt="Spectre Logo" className="w-full h-full object-contain" />
+          </div>
           <div className="flex flex-col">
             <span className="text-xl font-bold tracking-tighter text-white leading-none">SPECTRE</span>
-            <span className="text-[9px] uppercase tracking-widest text-red-500 font-bold mt-1">Admin Console</span>
+            <span className="text-[9px] uppercase tracking-widest text-red-500 font-bold mt-1">ADMIN CONSOLE</span>
           </div>
         </div>
       </div>

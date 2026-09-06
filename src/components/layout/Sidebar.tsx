@@ -56,11 +56,11 @@ export default function Sidebar() {
       <div className="p-6 mb-2">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-white/90 rounded-md flex items-center justify-center p-1 shrink-0">
-            <img src="/Spectrere%20logo.webp" alt="Spectre Logo" className="w-full h-full object-contain" />
+            <img src="/spectre-logo.webp" alt="Spectre Logo" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col">
             <span className="text-xl font-bold tracking-tighter text-white leading-none">SPECTRE</span>
-            <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold mt-1">Lets Build</span>
+            <span className="text-[9px] uppercase tracking-widest text-slate-400 font-bold mt-1">LETS BUILD</span>
           </div>
         </div>
       </div>
