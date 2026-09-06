@@ -1,0 +1,6 @@
+{
+  "name": "SPECTRE",
+  "description": "AI Venture, Software & Autonomous Business Operating System",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
