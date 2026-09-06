@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../core/AuthContext';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -64,15 +66,26 @@ export default function Login() {
             />
           </div>
           
-          <div>
+          <div className="relative">
             <label className="block text-xs font-bold text-slate-400 uppercase tracking-widest mb-2">Password</label>
             <input 
-              type="password" 
+              type={showPassword ? "text" : "password"} 
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full bg-black border border-white/10 rounded p-3 text-white focus:outline-none focus:border-white/30"
+              className="w-full bg-black border border-white/10 rounded p-3 text-white focus:outline-none focus:border-white/30 pr-10"
               required
             />
+            <button 
+              type="button" 
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-10 text-slate-400 hover:text-white"
+            >
+              {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+            </button>
+          </div>
+
+          <div className="flex justify-between items-center text-xs">
+            <Link to="/forgot-password" className="text-slate-400 hover:text-white">Forgot Password?</Link>
           </div>
           
           <button 
@@ -84,9 +97,7 @@ export default function Login() {
         </form>
         
         <div className="mt-6 text-center text-xs text-slate-500">
-          <p>Demo Accounts:</p>
-          <p>Admin: admin@spectre.com / admin123</p>
-          <p>Member: member@acme.com / password123</p>
+          <p>Don't have an account? <Link to="/register" className="text-white font-bold hover:underline">Create Account</Link></p>
         </div>
       </div>
     </div>

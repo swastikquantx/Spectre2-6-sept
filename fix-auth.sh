@@ -1,0 +1,1 @@
+sed -i 's/import { generateToken, verifyToken, comparePassword } from '.\/src\/backend\/auth';/import { generateToken, verifyToken, comparePassword, hashPassword } from '.\/src\/backend\/auth';/g' server.ts

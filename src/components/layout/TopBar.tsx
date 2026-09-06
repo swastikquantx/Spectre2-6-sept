@@ -1,4 +1,5 @@
 import { Search, Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../../core/AuthContext";
 import { useProjectContext } from "../../core/ProjectContext";
@@ -152,7 +153,7 @@ export default function TopBar() {
       <div className="flex items-center gap-4 ml-4 w-64 justify-end">
         <div className="flex flex-col text-right"><span className="text-xs font-bold text-white">{user?.name}</span><span className="text-[9px] uppercase tracking-widest text-slate-400">{user?.role}</span></div>
         <button onClick={logout} className="text-[10px] text-red-500 hover:text-red-400 uppercase tracking-widest font-bold">Logout</button>
-        <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 shadow-lg cursor-pointer hover:opacity-90 transition-opacity"></div>
+        <Link to="/app/settings/profile" className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 shadow-lg cursor-pointer hover:opacity-90 transition-opacity"></Link>
       </div>
     </header>
   );

@@ -1,0 +1,2 @@
+sed -i 's/<div className="w-8 h-8 rounded-full bg-indigo-500\/20 border border-indigo-500\/50 flex items-center justify-center text-indigo-400">/<Link to="\/app\/settings\/profile" className="w-8 h-8 rounded-full bg-indigo-500\/20 border border-indigo-500\/50 flex items-center justify-center text-indigo-400 hover:bg-indigo-500\/40 transition-colors">/g' src/components/layout/TopBar.tsx
+sed -i 's/<\/div>\n              <div>/<\/Link>\n              <div>/g' src/components/layout/TopBar.tsx

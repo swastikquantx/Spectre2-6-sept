@@ -11,6 +11,7 @@ export const ProtectedRoute: React.FC<{ allowedRoles?: string[] }> = ({ allowedR
   }
 
   if (!user) {
+    if (location.pathname.startsWith("/admin")) return <Navigate to="/admin/login" state={{ from: location }} replace />;
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 

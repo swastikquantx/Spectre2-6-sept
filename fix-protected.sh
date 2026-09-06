@@ -1,0 +1,1 @@
+sed -i 's/return <Navigate to="\/login" state={{ from: location }} replace \/>;/if (location.pathname.startsWith("\/admin")) return <Navigate to="\/admin\/login" state={{ from: location }} replace \/>;\n    return <Navigate to="\/login" state={{ from: location }} replace \/>;/g' src/core/ProtectedRoute.tsx

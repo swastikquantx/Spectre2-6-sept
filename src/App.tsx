@@ -11,6 +11,9 @@ import AdminShell from "./components/layout/AdminShell";
 import PublicLayout from "./components/layout/PublicLayout";
 import PublicPage from "./pages/public/PublicPage";
 import Login from "./pages/public/Login";
+import Register from "./pages/public/Register";
+import AdminLogin from "./pages/public/AdminLogin";
+import ForgotPassword from "./pages/public/ForgotPassword";
 
 import CommandCenter from "./pages/app/CommandCenter";
 import CreateFlow from "./pages/app/CreateFlow";
@@ -20,6 +23,8 @@ import AppBuilder from "./pages/app/AppBuilder";
 import WorkspaceShell from "./pages/app/workspace/WorkspaceShell";
 import ProjectOverview from "./pages/app/workspace/ProjectOverview";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import Users from "./pages/admin/Users";
+import Profile from "./pages/app/Settings/Profile";
 
 import { ProjectProvider } from "./core/ProjectContext";
 
@@ -56,12 +61,16 @@ export default function App() {
             </Route>
             
             <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             
             {/* App Routes */}
             <Route element={<ProtectedRoute />}>
               <Route path="/app" element={<AppShell />}>
                 <Route index element={<Navigate to="command" replace />} />
                 <Route path="command" element={<CommandCenter />} />
+                <Route path="settings/profile" element={<Profile />} />
                 <Route path="create" element={<CreateFlow />} />
                 <Route path="projects" element={<ProjectList />} />
                 
@@ -106,7 +115,7 @@ export default function App() {
             <Route element={<ProtectedRoute allowedRoles={['PLATFORM_ADMIN']} />}>
               <Route path="/admin" element={<AdminShell />}>
                 <Route index element={<AdminDashboard />} />
-                <Route path="users" element={<div className="p-8 text-slate-400">Users Management Placeholder</div>} />
+                <Route path="users" element={<Users />} />
                 <Route path="billing" element={<div className="p-8 text-slate-400">Billing Placeholder</div>} />
                 <Route path="ai-economics" element={<div className="p-8 text-slate-400">AI Economics Placeholder</div>} />
                 <Route path="models" element={<div className="p-8 text-slate-400">Models Placeholder</div>} />

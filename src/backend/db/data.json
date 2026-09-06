@@ -35,6 +35,18 @@
       "updatedAt": "2026-09-06T08:28:45.989Z",
       "status": "IN_PROGRESS",
       "stage": "ARCHITECTURE"
+    },
+    {
+      "name": "Smoke Test Project",
+      "description": "Testing",
+      "category": "SOFTWARE",
+      "id": "prj_1788689873285_x44vyfx",
+      "organizationId": "org_acme",
+      "createdBy": "usr_member",
+      "createdAt": "2026-09-06T10:17:53.285Z",
+      "updatedAt": "2026-09-06T10:17:53.285Z",
+      "status": "IN_PROGRESS",
+      "stage": "ARCHITECTURE"
     }
   ],
   "memories": [],
@@ -62,6 +74,40 @@
       "name": "Acme Member",
       "role": "MEMBER",
       "organizationId": "org_acme"
+    },
+    {
+      "id": "usr_1788689842727",
+      "name": "Test User",
+      "email": "test2z1h5s@example.com",
+      "mobile": "1234567890",
+      "whatsapp": "1234567890",
+      "city": "NY",
+      "state": "NY",
+      "country": "USA",
+      "company": "Test Co",
+      "designation": "CEO",
+      "passwordHash": "$2b$10$S1rmvtU5.x.X1g5gEa2/He0WMIv67UJfTiF4uaTDjCle9qKo3GzWm",
+      "role": "ORG_OWNER",
+      "organizationId": "org_1788689842727",
+      "emailVerified": false,
+      "mobileVerified": false
+    },
+    {
+      "id": "usr_1788689880038",
+      "name": "Test User",
+      "email": "testxizrj@example.com",
+      "mobile": "1234567890",
+      "whatsapp": "1234567890",
+      "city": "NY",
+      "state": "NY",
+      "country": "USA",
+      "company": "Test Co",
+      "designation": "CEO",
+      "passwordHash": "$2b$10$nrkDKhbYeg7ioDiZS7NI.O4vm0iix28bhLANIF0ZSVPzZvzpQd92y",
+      "role": "ORG_OWNER",
+      "organizationId": "org_1788689880038",
+      "emailVerified": false,
+      "mobileVerified": false
     }
   ],
   "artifacts": [
@@ -81,6 +127,13 @@
       "id": "art_1788683326914",
       "projectId": "prj_1788683325989_0l9h3sa",
       "generatedAt": "2026-09-06T08:28:46.914Z",
+      "summary": "Blueprint Generated",
+      "data": "I am a mock response. Please configure a real provider."
+    },
+    {
+      "id": "art_1788689874217",
+      "projectId": "prj_1788689873285_x44vyfx",
+      "generatedAt": "2026-09-06T10:17:54.217Z",
       "summary": "Blueprint Generated",
       "data": "I am a mock response. Please configure a real provider."
     }

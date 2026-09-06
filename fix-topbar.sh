@@ -1,0 +1,3 @@
+sed -i 's/import { Link } from "react-router-dom";//g' src/components/layout/TopBar.tsx
+sed -i 's/import { Search, Loader2 } from "lucide-react";/import { Search, Loader2 } from "lucide-react";\nimport { Link } from "react-router-dom";/g' src/components/layout/TopBar.tsx
+sed -i 's/<div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 shadow-lg cursor-pointer hover:opacity-90 transition-opacity"><\/div>/<Link to="\/app\/settings\/profile" className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 shadow-lg cursor-pointer hover:opacity-90 transition-opacity"><\/Link>/g' src/components/layout/TopBar.tsx

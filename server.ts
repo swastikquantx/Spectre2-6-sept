@@ -6,7 +6,7 @@ import { getAllProviders } from "./src/core/ai/providerRegistry";
 import { getEnabledModels } from "./src/core/ai/modelRegistry";
 import fs from 'fs';
 import cookieParser from 'cookie-parser';
-import { generateToken, verifyToken, comparePassword } from './src/backend/auth';
+import { generateToken, verifyToken, comparePassword, hashPassword } from './src/backend/auth';
 import { initializeUsers } from './src/backend/seedUsers';
 
 async function startServer() {
@@ -47,6 +47,111 @@ async function startServer() {
       next();
     };
   };
+
+  app.post("/api/auth/register", async (req, res) => {
+
+    const { name, email, mobile, whatsapp, city, state, country, company, designation, password } = req.body;
+
+    const db = getDb();
+
+    if (db.users?.find((u: any) => u.email === email)) {
+
+      return res.status(400).json({ error: "Email already registered" });
+
+    }
+
+    const passwordHash = await hashPassword(password);
+
+    const newUser = {
+
+      id: `usr_${Date.now()}`,
+
+      name, email, mobile, whatsapp, city, state, country, company, designation,
+
+      passwordHash,
+
+      role: "ORG_OWNER",
+
+      organizationId: `org_${Date.now()}`,
+
+      emailVerified: false,
+
+      mobileVerified: false
+
+    };
+
+    if (!db.users) db.users = [];
+
+    db.users.push(newUser);
+
+    saveDb(db);
+
+    const token = generateToken(newUser);
+
+    res.cookie("token", token, { httpOnly: true, secure: process.env.NODE_ENV === "production" });
+
+    const { passwordHash: _, ...userWithoutPassword } = newUser;
+
+    res.json({ user: userWithoutPassword, token });
+
+  });
+
+
+  app.post("/api/auth/verify", authenticate, (req, res) => {
+
+    const user = (req as any).user;
+
+    const db = getDb();
+
+    const index = db.users.findIndex((u: any) => u.id === user.id);
+
+    if (index > -1) {
+
+      db.users[index].emailVerified = true;
+
+      db.users[index].mobileVerified = true;
+
+      saveDb(db);
+
+      res.json({ success: true });
+
+    } else {
+
+      res.status(404).json({ error: "User not found" });
+
+    }
+
+  });
+
+
+  app.patch("/api/auth/me", authenticate, (req, res) => {
+
+    const user = (req as any).user;
+
+    const db = getDb();
+
+    const index = db.users.findIndex((u: any) => u.id === user.id);
+
+    if (index > -1) {
+
+      const updated = { ...db.users[index], ...req.body };
+
+      db.users[index] = updated;
+
+      saveDb(db);
+
+      const { passwordHash, ...rest } = updated;
+
+      res.json(rest);
+
+    } else {
+
+      res.status(404).json({ error: "User not found" });
+
+    }
+
+  });
+
 
   // Auth API
   app.post("/api/auth/login", async (req, res) => {
@@ -236,6 +341,17 @@ async function startServer() {
       res.status(500).json({ error: e.message });
 
     }
+
+  });
+
+
+  app.get("/api/admin/users", authenticate, requireRole(["PLATFORM_ADMIN"]), (req, res) => {
+
+    const db = getDb();
+
+    const users = (db.users || []).map((u: any) => { const { passwordHash, ...rest } = u; return rest; });
+
+    res.json(users);
 
   });
 
