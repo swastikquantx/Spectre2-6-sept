@@ -1,5 +1,6 @@
 import { Search, Loader2 } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "../../core/AuthContext";
 import { useProjectContext } from "../../core/ProjectContext";
 
 export default function TopBar() {
@@ -9,6 +10,7 @@ export default function TopBar() {
   const [isLoading, setIsLoading] = useState(false);
   const [intentResult, setIntentResult] = useState<any>(null);
   const { activeProject } = useProjectContext();
+  const { user, logout } = useAuth();
 
   const handleKeyDown = async (e: any) => {
     if (e.key === "Enter" && query.trim()) {
@@ -21,7 +23,7 @@ export default function TopBar() {
       try {
         const response = await fetch('/api/spectre-run', {
           method: 'POST',
-          headers: {
+          headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}`, 
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
@@ -148,6 +150,8 @@ export default function TopBar() {
         )}
       </div>
       <div className="flex items-center gap-4 ml-4 w-64 justify-end">
+        <div className="flex flex-col text-right"><span className="text-xs font-bold text-white">{user?.name}</span><span className="text-[9px] uppercase tracking-widest text-slate-400">{user?.role}</span></div>
+        <button onClick={logout} className="text-[10px] text-red-500 hover:text-red-400 uppercase tracking-widest font-bold">Logout</button>
         <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 shadow-lg cursor-pointer hover:opacity-90 transition-opacity"></div>
       </div>
     </header>

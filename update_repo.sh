@@ -1,0 +1,3 @@
+sed -i "s/headers: { 'Content-Type': 'application\/json' }/headers: { 'Content-Type': 'application\/json', 'Authorization': \`Bearer \${localStorage.getItem('token')}\` }/g" src/core/ProjectRepository.ts
+sed -i "s/const res = await fetch(\`\/api\/projects\/\${id}\`);/const res = await fetch(\`\/api\/projects\/\${id}\`, { headers: { 'Authorization': \`Bearer \${localStorage.getItem('token')}\` } });/g" src/core/ProjectRepository.ts
+sed -i "s/const res = await fetch('\/api\/projects');/const res = await fetch('\/api\/projects', { headers: { 'Authorization': \`Bearer \${localStorage.getItem('token')}\` } });/g" src/core/ProjectRepository.ts

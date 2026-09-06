@@ -86,12 +86,12 @@ export default function CommandCenter() {
                   <span className="text-slate-400">12 WORKFLOWS</span>
                 </div>
               </div>
-              <div className="border border-dashed border-white/10 rounded-lg p-4 flex items-center justify-center text-slate-600 hover:text-slate-400 cursor-pointer transition-colors min-h-[120px]">
+              <Link to="/app/create" className="border border-dashed border-white/10 rounded-lg p-4 flex items-center justify-center text-slate-600 hover:text-slate-400 cursor-pointer transition-colors min-h-[120px]">
                 <div className="text-center">
                   <div className="text-xl mb-1">+</div>
                   <div className="text-[10px] uppercase font-bold tracking-widest">Initialize New</div>
                 </div>
-              </div>
+              </Link>
               <div className="bg-white/[0.01] rounded-lg p-4 flex items-center justify-center border border-white/5 min-h-[120px]">
                 <span className="text-[10px] text-slate-700 italic font-mono">// Slot available</span>
               </div>
@@ -142,8 +142,8 @@ export default function CommandCenter() {
                 "I recommend initializing a 'Research Mission' for the Aether project to evaluate serverless vs container-based edge deployment."
               </p>
             </div>
-            <button className="w-full py-2 bg-white/10 hover:bg-white/20 text-white text-[10px] uppercase tracking-tighter font-bold rounded transition-colors mt-auto">
-              Execute Research
+            <button disabled className="w-full py-2 bg-white/5 opacity-50 cursor-not-allowed text-white text-[10px] uppercase tracking-tighter font-bold rounded transition-colors mt-auto">
+              NOT CONFIGURED
             </button>
           </div>
         </div>

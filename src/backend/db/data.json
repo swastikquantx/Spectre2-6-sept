@@ -1,1 +1,88 @@
-{}
+{
+  "projects": [
+    {
+      "name": "Smoke Test Project",
+      "description": "Testing",
+      "category": "SOFTWARE",
+      "id": "prj_1788683273639_woht88u",
+      "organizationId": "org_acme",
+      "createdBy": "usr_member",
+      "createdAt": "2026-09-06T08:27:53.639Z",
+      "updatedAt": "2026-09-06T08:27:53.639Z",
+      "status": "IN_PROGRESS",
+      "stage": "ARCHITECTURE"
+    },
+    {
+      "name": "Smoke Test Project",
+      "description": "Testing",
+      "category": "SOFTWARE",
+      "id": "prj_1788683281539_j51z4bl",
+      "organizationId": "org_acme",
+      "createdBy": "usr_member",
+      "createdAt": "2026-09-06T08:28:01.539Z",
+      "updatedAt": "2026-09-06T08:28:01.539Z",
+      "status": "IN_PROGRESS",
+      "stage": "ARCHITECTURE"
+    },
+    {
+      "name": "Smoke Test Project",
+      "description": "Testing",
+      "category": "SOFTWARE",
+      "id": "prj_1788683325989_0l9h3sa",
+      "organizationId": "org_acme",
+      "createdBy": "usr_member",
+      "createdAt": "2026-09-06T08:28:45.989Z",
+      "updatedAt": "2026-09-06T08:28:45.989Z",
+      "status": "IN_PROGRESS",
+      "stage": "ARCHITECTURE"
+    }
+  ],
+  "memories": [],
+  "users": [
+    {
+      "id": "usr_admin",
+      "email": "admin@spectre.com",
+      "passwordHash": "$2b$10$cP0jX8h8Wo6K7lzis/iWM.WWQysQF4TXkiKueoHFbQTL132RMuIT2",
+      "name": "Platform Admin",
+      "role": "PLATFORM_ADMIN",
+      "organizationId": "org_spectre"
+    },
+    {
+      "id": "usr_orgadmin",
+      "email": "orgadmin@acme.com",
+      "passwordHash": "$2b$10$lcjxJwPNu5Ovlk92qXMvf./TNG1QJwLWPgj9n6zb0Ia/pHvNkriUm",
+      "name": "Acme Admin",
+      "role": "ORG_ADMIN",
+      "organizationId": "org_acme"
+    },
+    {
+      "id": "usr_member",
+      "email": "member@acme.com",
+      "passwordHash": "$2b$10$0O1GsuRJxNKVAyYI8nRyu.3N6JrYRhHDuijLM0TRt.LIPExpEyWtm",
+      "name": "Acme Member",
+      "role": "MEMBER",
+      "organizationId": "org_acme"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "art_1788683274589",
+      "projectId": "prj_1788683273639_woht88u",
+      "generatedAt": "2026-09-06T08:27:54.589Z",
+      "data": "No data returned"
+    },
+    {
+      "id": "art_1788683282416",
+      "projectId": "prj_1788683281539_j51z4bl",
+      "generatedAt": "2026-09-06T08:28:02.416Z",
+      "data": "No data returned"
+    },
+    {
+      "id": "art_1788683326914",
+      "projectId": "prj_1788683325989_0l9h3sa",
+      "generatedAt": "2026-09-06T08:28:46.914Z",
+      "summary": "Blueprint Generated",
+      "data": "I am a mock response. Please configure a real provider."
+    }
+  ]
+}

@@ -5,7 +5,7 @@ export default function AdminDashboard() {
   const [config, setConfig] = useState<{providers: any[], models: any[]} | null>(null);
 
   useEffect(() => {
-    fetch('/api/spectre-config')
+    fetch('/api/spectre-config', { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
       .then(r => r.json())
       .then(setConfig)
       .catch(console.error);

@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "../../lib/utils";
+import { useAuth } from "../../core/AuthContext";
 import { Command, Grid, Box, Bot, Zap, Brain, Activity, Globe, Folder } from "lucide-react";
 
 const navGroups = [
@@ -50,6 +51,7 @@ const navGroups = [
 
 export default function Sidebar() {
   const location = useLocation();
+  const { user } = useAuth();
 
   return (
     <aside className="w-60 h-full border-r border-white/5 flex flex-col bg-[#080808] z-20 shrink-0">
@@ -99,12 +101,15 @@ export default function Sidebar() {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-white/5">
-        <Link to="/admin" className="flex items-center gap-3 px-2 py-2 text-xs text-slate-500 hover:text-white transition-colors">
-          <div className="w-2 h-2 rounded-full bg-slate-700"></div> 
-          Admin Console
-        </Link>
-      </div>
+      {user?.role === "PLATFORM_ADMIN" && (
+        <div className="p-4 border-t border-white/5">
+          <Link to="/admin" className="flex items-center gap-3 px-2 py-2 text-xs text-slate-500 hover:text-white transition-colors">
+            <div className="w-2 h-2 rounded-full bg-slate-700"></div>
+             Admin Console
+          </Link>
+        </div>
+      )}
     </aside>
   );
 }
+
